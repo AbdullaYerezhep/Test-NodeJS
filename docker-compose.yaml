@@ -1,0 +1,48 @@
+services:
+
+  rabbitmq:
+    #RabbitMQ
+    image: rabbitmq:3.11-management
+    container_name: rabbit
+    hostname: rabbitmq
+    ports:
+      #Port: 5672 is used by RabbitMQ Server
+      - "5672:5672"
+      #Port: 15672 is used by RabbitMQ Management UI
+      - "15672:15672"
+    environment:
+      #Add default username and password to log into the RabbitMQ ManagementUI & RabbitMQ Server
+      - RABBITMQ_DEFAULT_USER=user
+      - RABBITMQ_DEFAULT_PASS=pass
+      - RABBITMQ_DEFAULT_VHOST=wifihost
+    restart: always
+  m1:
+    # Microservice 1 (m1)
+    build:
+      context: ./microservice-M1  # Replace with the path to your m1 microservice's Dockerfile
+    ports:
+      - "5001:5001"  # Map the container's port 5001 to host's port 5001
+    depends_on:
+      - rabbitmq  # Specify the dependency on the RabbitMQ service
+    environment:
+      RABBITMQ_HOST: rabbitmq
+      RABBITMQ_PORT: 5672
+      RABBITMQ_USER: user
+      RABBITMQ_PASSWORD: pass
+      RABBITMQ_VHOST: wifihost
+    restart: always
+  m2:
+    # Microservice 2 (m2)
+    build:
+      context: ./microservice-M2  # Replace with the path to your m2 microservice's Dockerfile
+    ports:
+      - "5002:5002"  # Map the container's port 5002 to host's port 5002
+    depends_on:
+      - rabbitmq  # Specify the dependency on the RabbitMQ service
+    environment:
+      RABBITMQ_HOST: rabbitmq
+      RABBITMQ_PORT: 5672
+      RABBITMQ_USER: user
+      RABBITMQ_PASSWORD: pass
+      RABBITMQ_VHOST: wifihost
+    restart: always

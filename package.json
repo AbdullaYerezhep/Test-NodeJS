@@ -1,0 +1,23 @@
+{
+  "name": "test-nodejs",
+  "version": "1.0.0",
+  "description": "Test Task - Asynchronous Microservices",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AbdullaYerezhep/Test-NodeJS.git"
+  },
+  "keywords": [
+    "test",
+    "nodejs"
+  ],
+  "author": "Abdulla Yerezhep",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AbdullaYerezhep/Test-NodeJS/issues"
+  },
+  "homepage": "https://github.com/AbdullaYerezhep/Test-NodeJS#readme"
+}
