@@ -17,8 +17,8 @@ cd project-directory
 
 2. Build the Docker images and start the containers:
 
-`make build`
-`make up`
+ - `make build`
+ - `make up`
 
 3. Check the logs to ensure everything is running:
 
